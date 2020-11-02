@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/referrals/{id}', function ($id) {
+    $refers = User::with(['referrals'])->where('referred_id', $id)->get();
+
+    return view('referer', compact('id', 'refers'));
+});
+
+Route::get('/set-language/{id}', [\App\Http\Controllers\Admin\AdminController::class, 'setLanguage'])->name( 'set-language');
