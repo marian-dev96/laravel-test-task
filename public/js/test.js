@@ -6,7 +6,7 @@ $( document ).ready(function() {
         let id = $this.attr('data-id');
 
         if ($this.prop( "checked" )) {
-            $.get( "/referals/" + id, function( data ) {
+            $.get( "/referrals/" + id, function( data ) {
                 $this.parent().append(data);
             });
         } else {

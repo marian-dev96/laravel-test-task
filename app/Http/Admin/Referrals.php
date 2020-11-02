@@ -27,7 +27,7 @@ class Referrals extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Referrals';
+    protected $title;
 
     /**
      * @var string
@@ -40,6 +40,11 @@ class Referrals extends Section implements Initializable
     public function initialize()
     {
         $this->addToNavigation()->setPriority(2)->setIcon('fa fa-user');
+    }
+
+    public function getTitle()
+    {
+        return __('sleeping_owl::lang.referrals');
     }
 
     public function onDisplay($payload = [])
