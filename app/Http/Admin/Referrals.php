@@ -49,15 +49,14 @@ class Referrals extends Section implements Initializable
 
     public function onDisplay($payload = [])
     {
-//        $table = AdminDisplay::tree()
+//        $table = AdminDisplay::tree('SleepingOwl\Admin\Display\Tree\SimpleTreeType')
 //            ->setValue('email')
 //            ->setParentField('referred_id')
-//            ->setRootParentId(1)
+//            ->setRootParentId(auth()->user()->id)
 //            ->setMaxDepth(5)
 //            ->setReorderable(false);
 //
 //        return $table;
-
 
         Meta::addCss( 'test', 'css/test.css' );
         Meta::addJs( 'test', 'js/test.js' );
