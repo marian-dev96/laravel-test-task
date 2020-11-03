@@ -17,11 +17,14 @@ class Language
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $lang = \Cache::remember('lang', 3600, function () {
-            return auth()->user()->language->slug ?? (\App\Models\Language::default()->first()->slug ?? \App::getLocale());
-        });
+        if (auth()->check()) {
+            $lang = \Cache::remember('lang_' . auth()->user()->id, 3600, function () {
+                return auth()->user()->language->slug ?? (\App\Models\Language::default()->first()->slug ?? \App::getLocale());
+            });
 
-        \App::setLocale($lang);
+            \App::setLocale($lang);
+        }
+
 
         return $next($request);
     }

@@ -18,7 +18,7 @@ class AdminController extends Controller
         $language = Language::find($id);
 
         if ($language) {
-            \Cache::forget('lang');
+            \Cache::forget('lang_' . auth()->user()->id);
 
             auth()->user()->language_id = $language->id;
             auth()->user()->save();

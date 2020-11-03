@@ -24,4 +24,6 @@ Route::get('/referrals/{id}', function ($id) {
     return view('referer', compact('id', 'refers'));
 });
 
-Route::get('/set-language/{id}', [\App\Http\Controllers\Admin\AdminController::class, 'setLanguage'])->name( 'set-language');
+Route::get('/set-language/{id}', [\App\Http\Controllers\Admin\AdminController::class, 'setLanguage'])
+    ->name( 'set-language')
+    ->middleware('auth');
